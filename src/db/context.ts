@@ -1,5 +1,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import Role from '../models/Role';
+import User from '../models/User';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -10,7 +12,7 @@ const AppDataSource = new DataSource({
   database: 'e-commerce-api',
   synchronize: false,
   logging: false,
-  entities: [],
+  entities: [Role, User],
   subscribers: [],
   migrations: ['./src/migrations/*.ts'],
   migrationsTableName: 'migrations',
