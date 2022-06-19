@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-
+import routes from './routes';
 
 function runServer() {
 
@@ -8,6 +8,7 @@ function runServer() {
 
   server.use(cors());
   server.use(express.json());
+  server.use(routes);
 
   const PORT = 3333;
 
@@ -15,3 +16,4 @@ function runServer() {
     console.log(`Server is running on ${PORT}`);
   });
 }
+runServer()
