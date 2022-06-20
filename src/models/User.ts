@@ -23,6 +23,36 @@ export default class User {
     length: 100,
     nullable: false,
   })
+  last_name: string;
+
+  @Column({
+    length: 100,
+    nullable: false,
+  })
+  birthday_date: string;
+
+  @Column({
+    length: 100,
+    nullable: false,
+  })
+  gender_identity: string;
+
+  @Column({
+    length: 100,
+    nullable: false,
+  })
+  sexual_orientation: string;
+
+  @Column({
+    length: 100,
+    nullable: false,
+  })
+  race: string;
+
+  @Column({
+    length: 100,
+    nullable: false,
+  })
   email: string;
 
   @Column({

@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import routes from './routes';
-import AppDataSource from './db/context'
+import AppDataSource from './db/context';
 import Role from './models/Role';
 
 function runServer() {
-
   const server = express();
 
   server.use(cors());
