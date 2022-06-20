@@ -5,6 +5,6 @@ import RolesRoutes from './routes.roles';
 // Todas as rotas da nossa aplicação
 const routes = Router();
 
-routes.use('/', RolesRoutes);
+routes.use('/roles', RolesRoutes);
 
 export default routes;
