@@ -11,7 +11,7 @@ function runServer() {
   server.use(express.json());
   server.use(routes);
 
-  const PORT = 3333;
+  const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : 3333;
 
   server.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`);
