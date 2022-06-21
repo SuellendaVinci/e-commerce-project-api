@@ -27,5 +27,6 @@ const AppDataSource = new typeorm_1.DataSource({
     subscribers: [],
     migrations: ['./dist/migrations/*{.ts,.js}'],
     migrationsTableName: 'migrations',
+    ssl: { rejectUnauthorized: false },
 });
 exports.default = AppDataSource;
