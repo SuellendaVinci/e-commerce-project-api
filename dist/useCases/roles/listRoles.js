@@ -12,22 +12,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const createRole_1 = __importDefault(require("../useCases/roles/createRole"));
-const listRoles_1 = __importDefault(require("../useCases/roles/listRoles"));
-// Todas as rotas de Roles
-const rolesRoutes = (0, express_1.Router)();
-// Cadastro
-rolesRoutes.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const useCase = new createRole_1.default();
-    const role = yield useCase.execute(request.body);
-    const { statusCode, data } = role;
-    return response.status(statusCode).send(data);
-}));
-// Listagem
-rolesRoutes.get('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const useCase = new listRoles_1.default();
-    const roles = yield useCase.execute();
-    return response.send(roles);
-}));
-exports.default = rolesRoutes;
+const rolesRepository_1 = __importDefault(require("../../repositories/rolesRepository"));
+class ListRolesUseCase {
+    constructor() {
+        this._repository = rolesRepository_1.default;
+    }
+    execute() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this._repository.find({});
+        });
+    }
+}
+exports.default = ListRolesUseCase;
