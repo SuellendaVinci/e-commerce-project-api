@@ -29,6 +29,7 @@ const AppDataSource = new DataSource({
   subscribers: [],
   migrations: ['./dist/migrations/*{.ts,.js}'],
   migrationsTableName: 'migrations',
+  ssl: { rejectUnauthorized: false },
 });
 
 export default AppDataSource;
