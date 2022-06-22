@@ -13,88 +13,60 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const Role_1 = __importDefault(require("./Role"));
-const Course_1 = __importDefault(require("./Course"));
-let User = class User {
+const User_1 = __importDefault(require("./User"));
+let Course = class Course {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
-], User.prototype, "id", void 0);
+], Course.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         length: 100,
         nullable: false,
     }),
     __metadata("design:type", String)
-], User.prototype, "name", void 0);
+], Course.prototype, "course_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({
+        nullable: false,
+    }),
+    __metadata("design:type", Number)
+], Course.prototype, "price", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         length: 100,
         nullable: false,
     }),
     __metadata("design:type", String)
-], User.prototype, "last_name", void 0);
+], Course.prototype, "duration", void 0);
 __decorate([
     (0, typeorm_1.Column)({
         length: 100,
         nullable: false,
     }),
     __metadata("design:type", String)
-], User.prototype, "birthday_date", void 0);
+], Course.prototype, "teacher_name", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        length: 100,
-        nullable: false,
+        length: 256,
+        nullable: true,
     }),
     __metadata("design:type", String)
-], User.prototype, "gender_identity", void 0);
+], Course.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)({
-        length: 100,
-        nullable: false,
+        length: 256,
+        nullable: true,
     }),
     __metadata("design:type", String)
-], User.prototype, "sexual_orientation", void 0);
+], Course.prototype, "photo", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        length: 100,
-        nullable: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "race", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
-        length: 100,
-        nullable: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
-        length: 250,
-        nullable: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => Role_1.default, {}),
-    (0, typeorm_1.JoinColumn)({
-        name: 'role_id',
-    }),
-    __metadata("design:type", Role_1.default)
-], User.prototype, "role", void 0);
-__decorate([
-    (0, typeorm_1.Column)({
-        type: 'uuid',
-    }),
-    __metadata("design:type", String)
-], User.prototype, "role_id", void 0);
-__decorate([
-    (0, typeorm_1.ManyToMany)(() => Course_1.default, (course) => course.users, { cascade: true }),
+    (0, typeorm_1.ManyToMany)(() => User_1.default, (user) => user.courses),
+    (0, typeorm_1.JoinTable)(),
     __metadata("design:type", Array)
-], User.prototype, "courses", void 0);
-User = __decorate([
-    (0, typeorm_1.Entity)('users')
-], User);
-exports.default = User;
+], Course.prototype, "users", void 0);
+Course = __decorate([
+    (0, typeorm_1.Entity)('courses')
+], Course);
+exports.default = Course;

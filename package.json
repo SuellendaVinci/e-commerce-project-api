@@ -7,8 +7,8 @@
     "dev:server": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules ./src/server.ts",
     "start": "node -r esm dist/server.js",
     "typeorm": "typeorm-ts-node-esm -d ./dist/db/context.js",
-    "migration:create": "typeorm migration:create dist/migrations/CREATE",
-    "migration:generate": "npm run typeorm migration:generate dist/migrations/GENERATE",
+    "migration:create": "typeorm migration:create src/migrations/CREATE",
+    "migration:generate": "npm run typeorm migration:generate src/migrations/GENERATE",
     "migration:run": "npm run typeorm migration:run",
     "migration:revert": "npm run typeorm migration:revert"
   },

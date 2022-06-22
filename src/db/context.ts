@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import Role from '../models/Role';
 import User from '../models/User';
+import Course from '../models/Course';
 import { herokuDBData } from '../utils/getHerokuDBData';
 
 // postgres://{user}:{password}@{hostname}:{port}/{database-name}
@@ -25,7 +26,7 @@ const AppDataSource = new DataSource({
   database,
   synchronize: false,
   logging: false,
-  entities: [Role, User],
+  entities: [Role, User, Course],
   subscribers: [],
   migrations: ['./dist/migrations/*{.ts,.js}'],
   migrationsTableName: 'migrations',

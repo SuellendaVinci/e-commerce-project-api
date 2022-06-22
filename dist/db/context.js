@@ -7,6 +7,7 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Role_1 = __importDefault(require("../models/Role"));
 const User_1 = __importDefault(require("../models/User"));
+const Course_1 = __importDefault(require("../models/Course"));
 const getHerokuDBData_1 = require("../utils/getHerokuDBData");
 // postgres://{user}:{password}@{hostname}:{port}/{database-name}
 const DATABASE_URL_LOCAL = 'postgres://postgres:postgres@localhost:5432/e-commerce-api';
@@ -23,7 +24,7 @@ const AppDataSource = new typeorm_1.DataSource({
     database,
     synchronize: false,
     logging: false,
-    entities: [Role_1.default, User_1.default],
+    entities: [Role_1.default, User_1.default, Course_1.default],
     subscribers: [],
     migrations: ['./dist/migrations/*{.ts,.js}'],
     migrationsTableName: 'migrations',
