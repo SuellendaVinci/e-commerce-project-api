@@ -14,12 +14,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const createUser_1 = __importDefault(require("../useCases/users/createUser"));
+const registerUserCourses_1 = __importDefault(require("../useCases/users/registerUserCourses"));
+const getUser_1 = __importDefault(require("../useCases/users/getUser"));
 // Todas as rotas de Users
 const usersRoutes = (0, express_1.Router)();
 // Cadastro
 usersRoutes.post('/', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const useCase = new createUser_1.default();
     const user = yield useCase.execute(request.body);
+    const { statusCode, data } = user;
+    return response.status(statusCode).send(data);
+}));
+// Cadastrar cursos do aluno
+usersRoutes.post('/courses', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const useCase = new registerUserCourses_1.default();
+    const user = yield useCase.execute(request.body);
+    const { statusCode, data } = user;
+    return response.status(statusCode).send(data);
+}));
+// Pesquisa
+usersRoutes.get('/:id', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = request.params;
+    const useCase = new getUser_1.default();
+    const user = yield useCase.execute({ id });
     const { statusCode, data } = user;
     return response.status(statusCode).send(data);
 }));
