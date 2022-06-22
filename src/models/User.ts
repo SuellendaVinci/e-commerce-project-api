@@ -2,11 +2,13 @@ import {
   Column,
   Entity,
   ManyToOne,
+  ManyToMany,
   JoinColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import Role from './Role';
+import Course from './Course';
 
 @Entity('users')
 export default class User {
@@ -72,4 +74,7 @@ export default class User {
     type: 'uuid',
   })
   role_id: string;
+
+  @ManyToMany(() => Course, (course) => course.users, { cascade: true })
+  courses: Course[];
 }
