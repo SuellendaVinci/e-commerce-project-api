@@ -16,6 +16,7 @@ const express_1 = require("express");
 const createUser_1 = __importDefault(require("../useCases/users/createUser"));
 const registerUserCourses_1 = __importDefault(require("../useCases/users/registerUserCourses"));
 const getUser_1 = __importDefault(require("../useCases/users/getUser"));
+const deleteUserCourse_1 = __importDefault(require("../useCases/users/deleteUserCourse"));
 // Todas as rotas de Users
 const usersRoutes = (0, express_1.Router)();
 // Cadastro
@@ -37,6 +38,13 @@ usersRoutes.get('/:id', (request, response) => __awaiter(void 0, void 0, void 0,
     const { id } = request.params;
     const useCase = new getUser_1.default();
     const user = yield useCase.execute({ id });
+    const { statusCode, data } = user;
+    return response.status(statusCode).send(data);
+}));
+// Deletar curso do usuário
+usersRoutes.patch('/courses', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const useCase = new deleteUserCourse_1.default();
+    const user = yield useCase.execute(request.body);
     const { statusCode, data } = user;
     return response.status(statusCode).send(data);
 }));
